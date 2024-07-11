@@ -1,3 +1,5 @@
+"use client"
+import { useEffect,useState } from "react";
 import Image from "next/image";
 import line from "@/public/homePageAssets/Line.png";
 import logo from "@/public/homePageAssets/logo.png";
@@ -13,6 +15,49 @@ import scroll3b from "@/public/homePageAssets/scroll3b.png";
 import grain from "@/public/homePageAssets/grainbackground.png";
 
 const Home = () => {
+   const [activeIndex, setActiveIndex] = useState<number>(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = document.querySelectorAll('section');
+            const bars = document.querySelectorAll('.bars');
+            
+            sections.forEach((section, i) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (window.scrollY >= sectionTop - sectionHeight / 3) {
+                    setActiveIndex(i); // Set active index based on scroll position
+                }
+            });
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const changeBarsAppearance = () => {
+        const bars = document.querySelectorAll('.bars');
+        
+        bars.forEach((bar, j) => {
+            if (activeIndex  === j) {
+                bar.classList.add('opacity-100', 'w-12');
+            } else {
+                bar.classList.add('opacity-50', 'w-4');
+                bar.classList.remove('opacity-100', 'w-12');
+            }
+        });
+    };
+
+    useEffect(() => {
+        changeBarsAppearance();
+    }, [activeIndex]);
+
+
+        
   return (
     <>
       {/* Container */}
@@ -48,7 +93,7 @@ const Home = () => {
           {/* Main Content */}
           <div className="flex flex-col">
             {/* Banner 1 */}
-            <section className="flex justify-end items-center h-screen w-screen my-4">
+            <section id='1' className="flex justify-end items-center h-screen w-screen my-4">
               {/* left side */}
               <div className="mr-48">
                 <Image src={scroll1} alt="scroll1" />
@@ -64,7 +109,7 @@ const Home = () => {
             </section>
 
             {/* Banner 2 */}
-            <section className="flex justify-end items-center h-screen w-screen my-4">
+            <section id='2'className="flex justify-end items-center h-screen w-screen my-4">
               {/* left side */}
               <div className="mr-48">
                 <Image src={scroll2} alt="scroll1" />
@@ -80,7 +125,7 @@ const Home = () => {
             </section>
 
             {/* Banner 3 */}
-            <section className="flex justify-end items-center h-screen w-screen my-4">
+            <section id='3'className="flex justify-end items-center h-screen w-screen my-4">
               {/* left side */}
               <div className="mr-48">
                 <Image src={scroll3} alt="scroll1" />
@@ -97,20 +142,18 @@ const Home = () => {
           </div>
 
           {/* Footer */}
-          <section className="flex tracking-[1.25rem] z-20 bottom-0 items-center justify-evenly fixed w-full my-8">
+          <footer className="flex tracking-[1.25rem] z-20 bottom-0 items-center justify-evenly fixed w-full my-8">
             <div className="rotate-90 space-y-2">
-              <Image src={line} alt="line" className="h-1 w-4 mx-auto opacity-50" />
-              <Image src={line} alt="line" className="h-1 w-12 mr-8" />
-              <Image src={line} alt="line" className="h-1 w-4 opacity-50 mx-auto" />
-              <Image src={line} alt="line" className="h-1 w-4 opacity-50 mx-auto" />
-              <Image src={line} alt="line" className="h-1 w-4 opacity-50 mx-auto" />
+              <Image src={line} alt="line" className="h-1 w-4 mx-auto opacity-50 bars"  />
+              <Image src={line} alt="line" className="h-1 w-4 mx-auto opacity-50 bars" />
+              <Image src={line} alt="line" className="h-1 w-4 mx-auto opacity-50 bars" />
             </div>
             <p className="self-center">Shop</p>
-          </section>
+          </footer>
         </div>
       </div>
     </>
   );
 };
 
-export default Home;
+export default Home
