@@ -9,7 +9,7 @@ import scroll2b from "@/public/homePageAssets/scroll2b.png";
 import scroll3 from "@/public/homePageAssets/scroll3.png";
 import scroll3b from "@/public/homePageAssets/scroll3b.png";
 
-const Body = () => {
+const DBody = () => {
     const promo = [
         {
             src1: scroll1,
@@ -67,4 +67,4 @@ const Body = () => {
     );
 };
 
-export default Body;
+export default DBody;

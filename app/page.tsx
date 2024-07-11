@@ -2,7 +2,8 @@
 import { useEffect,useState } from "react";
 import Image from "next/image";
 import line from "@/public/homePageAssets/Line.png";
-import Body from "./components/Body";
+import DBody from "./components/DesktopBody";
+import MBody from "./components/MobileBody";
 
 const Home = () => {
    const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -77,7 +78,16 @@ const Home = () => {
             </div>
           </li>
         </nav>
-        <Body></Body>
+        {/* Desktop */}
+        <div className="hidden lg:block md:block">
+        <DBody></DBody>
+        </div>
+
+        {/* Mobile */}
+        <div className="block lg:hideen md:hidden">
+        <MBody></MBody>
+        </div>
+
       </div>
     </>
   );
