@@ -67,21 +67,21 @@ const Home = () => {
       {/* Container */}
       <div className="w-screen h-full">
         {/* Nav */}
-        <nav className="flex justify-between p-16 list-none tracking-[1.25rem] z-20">
+        <nav className="flex justify-between lg:p-16 p-8 list-none lg:tracking-[1.25rem] tracking-[.5rem] z-20">
           <li>
             <div className="flex">
               <div className="flex flex-col mr-8 space-y-4">
-                <Image src={line} alt="line" className="h-1 w-20" />
-                <Image src={line} alt="line" className="h-1 w-12" />
+                <Image src={line} alt="line" className="h-1 lg:w-20 w-10" />
+                <Image src={line} alt="line" className="h-1 lg:w-12 w-6" />
               </div>
-              <p>Menu</p>
+              <p className="lg:flex hidden">Menu</p>
             </div>
           </li>
-          <li>SRCH</li>
+          <li  className="lg:flex hidden">SRCH</li>
           <li>
             <div className="flex">
-              <Image src={line} alt="line" className="h-1 my-auto mx-4" />
-              <Image src={line} alt="line" className="h-1 w-12 my-auto mx-6" />
+              <Image src={line} alt="line" className="h-1 my-auto mx-4 lg:flex hidden" />
+              <Image src={line} alt="line" className="h-1 w-12  my-auto mx-6 " />
               <p>CART</p>
               <p>3</p>
             </div>
