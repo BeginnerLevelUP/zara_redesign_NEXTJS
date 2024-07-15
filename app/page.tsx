@@ -13,8 +13,9 @@ useEffect(() => {
         const sections = document.querySelectorAll(className);
 
         sections.forEach((section, i) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
+            const secEle=section as HTMLElement
+            const sectionTop = secEle.offsetTop;
+            const sectionHeight = secEle.clientHeight;
 
             if (window.scrollY >= sectionTop - sectionHeight / 3) {
                 setActiveIndex(i);
