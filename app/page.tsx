@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { useEffect,useState } from "react";
 import Image from "next/image";
 import line from "@/public/homePageAssets/Line.png";
@@ -7,7 +7,21 @@ import MBody from "./components/MobileBody";
 
 const Home = () => {
  const [activeIndex, setActiveIndex] = useState<number>(0);
+  useEffect( () => {
 
+    (
+
+      async () => {
+
+          const LocomotiveScroll = (await import('locomotive-scroll')).default
+
+          const locomotiveScroll = new LocomotiveScroll();
+
+      }
+
+    )()
+
+  }, [])
 useEffect(() => {
     const handleScroll = (className: string) => {
         const sections = document.querySelectorAll(className);
