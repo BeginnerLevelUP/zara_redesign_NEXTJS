@@ -12,15 +12,24 @@ import scroll3b from "@/public/homePageAssets/scroll3b.png";
     const promo = [
         {
             src1: scroll1,
-            src2: scroll1b
+            src2: scroll1b,
+            title:"COLOUR BLOCK FAUX",
+            des:"SUEDE T-SHIRT",
+            price:"$15",
         },
         {
             src1: scroll2,
-            src2: scroll2b
+            src2: scroll2b,
+            title:"SATIN FINISH PLAYSUIT",
+            des:"Dress",
+            price:"$26",
         },
         {
             src1: scroll3,
-            src2: scroll3b
+            src2: scroll3b,
+            title:"DOUBLE-BREASTED",
+            des:"LINEN BLAZER",
+            price:"$26",
         }
     ];
 
@@ -28,20 +37,31 @@ import scroll3b from "@/public/homePageAssets/scroll3b.png";
 const MBody = () => {
   return (
     <>
-      {/* Container */}
-      <div className="w-screen h-screen">
-        {/* Background Image */}
+{
+  promo.map((pro, index) => (
+    <section key={index} id={`${index}`} className="relative w-screen h-screen -z-10 mobileView">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-20"
+        style={{ backgroundImage: `url(${pro.src2.src})` }}
+      ></div>
+      {/* Body */}
+      <div className="relative flex flex-col justify-center items-center min-h-screen space-y-10">
         <Image
-          src={scroll1b}
-          alt="Background Image"
-          layout="fill"
-          objectFit="cover"
-          priority={true}
+          src={pro.src1}
+          alt="ForeFront Image"
+          width={300}
+          height={300}
+          className="mx-auto"
         />
-        <div className="h-1/2 w-1/2 bg-cover">
-          <p>hi</p>
+        <div className="text-center">
+          <p>{pro.title}</p>
+          <p>{pro.des}</p>
+          <p>{pro.price}</p>
         </div>
       </div>
+    </section>
+  ))
+}
     </>
   );
 };

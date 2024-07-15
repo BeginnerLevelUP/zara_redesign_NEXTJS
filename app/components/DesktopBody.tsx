@@ -36,7 +36,7 @@ const DBody = () => {
             <div className="flex flex-col">
                 {/* Render each promo item dynamically */}
                 {promo.map((item, index) => (
-                    <section key={index} id={`${index}`} className="flex justify-end items-center h-screen w-screen my-4">
+                    <section key={index} id={`${index}`} className="flex justify-end items-center h-screen w-screen my-4 desktopView">
                         {/* left side */}
                         <div className="mr-48">
                             <Image src={item.src1} alt={`scroll${index + 1}`} />
@@ -53,16 +53,7 @@ const DBody = () => {
                 ))}
             </div>
 
-            {/* Footer */}
-            <footer className="flex tracking-[1.25rem] z-20 bottom-0 items-center justify-evenly fixed w-full my-8">
-                <div className="rotate-[270deg] space-y-2">
-                    {/* Example of rendering bars dynamically */}
-                    {promo.map((_, index) => (
-                        <Image key={index} src={line} alt={`line-${index}`} className="h-1 w-4 mx-auto opacity-50 bars transition-all" />
-                    ))}
-                </div>
-                <p className="self-center">Shop</p>
-            </footer>
+
         </div>
     );
 };
